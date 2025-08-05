@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css'
 import Location from './components/Location.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
   return (
     <div className="App">
-      <h1>Location List</h1>
       <Location />
+      <Footer />
     </div>
   )
 }
