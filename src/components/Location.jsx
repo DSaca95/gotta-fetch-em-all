@@ -1,52 +1,28 @@
-import React, { useState } from "react";
-import useFetch from "../hooks/useFetch.js";
+import React from 'react'
+import useFetch from '../hooks/useFetch.js'
 
-const Location = () => {
-    const {data, loading, error} = useFetch('https://pokeapi.co/api/v2/location');
-    const [selectedLocation, setSelectedLocation] = useState(null);
-    const [selectedLocationUrl, setSelectedLocationUrl] = useState(null);
-
-    const locationsData = data ? data.results : [];
-    
-    const {data: locationDetails, loading: locationLoading, error: locationError} = useFetch(selectedLocationUrl);
-
-    const handleLocationBtn = (location) => {
-        setSelectedLocation(location);
-        setSelectedLocationUrl(location.url);
-    };
+function Location({url, onBack}) {
+    const [location, loading, error] = useFetch(url);
 
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error: {error}</p>
 
-    return(
-        <div id="locations">
-            {selectedLocation && (
+    return (
+        <div>
+            {loading && <p>Loading location details...</p>}
+            {error && <p>Error loading details: {error}</p>}
+
+            {location && (
                 <div>
-                    <h3>Selected Location: {selectedLocation.name}</h3>
-                    {locationLoading && <p>Loading location details...</p>}
-                    {locationError && <p>Error loading details: {locationError}</p>}
-                    {locationDetails && (
-                        <div>
-                            <p>ID: {locationDetails.id}</p>
-                            <p>Region: {locationDetails.region?.name || 'Unknown'}</p>
-                            <p>Areas: {locationDetails.areas?.length || 0}</p>
-                        </div>
-                    )}
-                    <button onClick={() => setSelectedLocation(null)}>Close Details</button>
+                    <h3>Selected Location: {location.name}</h3>
+                    <p>ID: {location.id}</p>
+                    <p>Region: {location.region?.name || 'Unknown'}</p>
+                    <p>Areas: {location.areas?.length || 0}</p>
                 </div>
             )}
-            
-            <h2>All Locations:</h2>
-            {
-                locationsData.map((location, index) => {
-                    return <div key={index}>
-                        <h2>{location.name}</h2>
-                        <button onClick={() => handleLocationBtn(location)}>Go to location</button>
-                    </div>
-                })
-            }
+            <button onClick={onBack}>Back</button>
         </div>
-    );
+  )
 }
 
-export default Location;
+export default Location
