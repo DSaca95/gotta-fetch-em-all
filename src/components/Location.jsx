@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useFetch from "../hooks/useFetch.js";
+import "../styles/Location.css";
 
 const Location = () => {
     const {data, loading, error} = useFetch('https://pokeapi.co/api/v2/location');
@@ -36,7 +37,7 @@ const Location = () => {
                 </div>
             )}
             
-            <h2>All Locations:</h2>
+            <h1>All Locations:</h1>
             {
                 locationsData.map((location, index) => {
                     return <div key={index}>
