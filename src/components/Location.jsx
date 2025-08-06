@@ -1,7 +1,7 @@
 import React from 'react'
 import useFetch from '../hooks/useFetch.js'
 
-function Location({url, onBack}) {
+function Location({url, onBack, handleAreaBtn}) {
     const [location, loading, error] = useFetch(url);
 
     if (loading) return <p>Loading...</p>
@@ -14,13 +14,18 @@ function Location({url, onBack}) {
 
             {location && (
                 <div>
-                    <h3>Selected Location: {location.name}</h3>
-                    <p>ID: {location.id}</p>
-                    <p>Region: {location.region?.name || 'Unknown'}</p>
-                    <p>Areas: {location.areas?.length || 0}</p>
+                    <h3>{location.name}({location.region?.name || 'Unknown'})</h3>
+                    <p>Areas:</p>
+                    <ul className='areas-list'>
+                        {
+                            location.areas.map((area) => (
+                                <li key={area.name}><button onClick={() => handleAreaBtn(area.url)}>{area.name}</button></li>
+                            ))
+                        }
+                    </ul>
                 </div>
             )}
-            <button onClick={onBack}>Back</button>
+            <button onClick={() => onBack('locationsPage')}>Back</button>
         </div>
   )
 }

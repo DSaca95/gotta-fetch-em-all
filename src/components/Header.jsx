@@ -1,13 +1,13 @@
 import React from "react";
 import "../styles/Header.css";
 
-function Header() {
+function Header({onClickPokePageBtn, onClickLocationsPageBtn}) {
     return (
         <header>
             <div className="logo-container"><a href="#"></a></div>
             <div className="button-container">
-            <button className="location-list">Locations 🗺️</button>
-            <button className="my-pokemons">My Pokemons 🦖🦖🦖</button>
+            <button onClick={onClickLocationsPageBtn} className="location-list">Locations 🗺️</button>
+            <button onClick={onClickPokePageBtn} className="my-pokemons">My Pokemons 🦖🦖🦖</button>
             </div>
         </header>
     )

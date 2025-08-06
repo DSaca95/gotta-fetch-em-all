@@ -8,7 +8,6 @@ const Locations = ({data, loading, error, handleClick}) => {
 
     return(
         <div id="locations">
-            <h2>All Locations:</h2>
             {
                 locationsData.map((location, index) => {
                     return <div key={index}>
