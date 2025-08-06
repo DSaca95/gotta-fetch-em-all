@@ -12,14 +12,21 @@ function App() {
   const [locations, loading, error] = useFetch('https://pokeapi.co/api/v2/location');
   const [selectedLocationURL, setSelectedLocationURL] = useState(null);
   const [selectedAreaURL, setSelectedAreaURL] = useState(null);
+  const [ownedPokemons, setOwnedPokemons] = useState(['bulbasaur', 'charizard', 'poliwhirl']);
 
   const [currentPage, setCurrentPage] = useState('locationsPage');
 
+  const addPokemon = (pokemonName) => {
+    if (!ownedPokemons.includes(pokemonName)) {
+      setOwnedPokemons(prev => [...prev, pokemonName]);
+    }
+  };
+
   const Pages = {
     locationsPage: <Locations data={locations} loading={loading} error={error} handleClick={handleGoToLocationBtn}/>,
-    myPokePage: <MyPokemon />,
+    myPokePage: <MyPokemon ownedPokemons={ownedPokemons} />,
     locationPage: <Location url={selectedLocationURL} onBack={onBack} handleAreaBtn={handleAreaBtn}/>,
-    areaPage: <Area url={selectedAreaURL} onBack={onBack}/>
+    areaPage: <Area url={selectedAreaURL} onBack={onBack} addPokemon={addPokemon} ownedPokemons={ownedPokemons}/>
   }
 
   function handleGoToLocationBtn(url) {

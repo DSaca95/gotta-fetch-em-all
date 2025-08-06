@@ -1,10 +1,11 @@
 import React from "react";
+import "../styles/Locations.css";
 
 const Locations = ({data, loading, error, handleClick}) => {
     const locationsData = data ? data.results : [];
 
-    if (loading) return <p>Loading...</p>
-    if (error) return <p>Error: {error}</p>
+    if (loading) return <p className="locations-loading">Loading...</p>
+    if (error) return <p className="locations-error">Error: {error}</p>
 
     return(
         <div id="locations">

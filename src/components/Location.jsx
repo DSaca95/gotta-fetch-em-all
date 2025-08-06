@@ -1,31 +1,40 @@
 import React from 'react'
 import useFetch from '../hooks/useFetch.js'
+import '../styles/Location.css'
 
 function Location({url, onBack, handleAreaBtn}) {
     const [location, loading, error] = useFetch(url);
 
-    if (loading) return <p>Loading...</p>
-    if (error) return <p>Error: {error}</p>
+    if (loading) return <p className="location-loading">Loading...</p>
+    if (error) return <p className="location-error">Error: {error}</p>
 
     return (
-        <div>
-            {loading && <p>Loading location details...</p>}
-            {error && <p>Error loading details: {error}</p>}
+        <div className="location-container">
+            {loading && <p className="location-loading">Loading location details...</p>}
+            {error && <p className="location-error">Error loading details: {error}</p>}
 
             {location && (
                 <div>
-                    <h3>{location.name}({location.region?.name || 'Unknown'})</h3>
-                    <p>Areas:</p>
-                    <ul className='areas-list'>
-                        {
-                            location.areas.map((area) => (
-                                <li key={area.name}><button onClick={() => handleAreaBtn(area.url)}>{area.name}</button></li>
-                            ))
-                        }
-                    </ul>
+                    <div className="location-header">
+                        <h3>{location.name}</h3>
+                        <div className="location-region">({location.region?.name || 'Unknown region'})</div>
+                    </div>
+                    
+                    <div className="areas-section">
+                        <p>Available Areas:</p>
+                        <ul className='areas-list'>
+                            {
+                                location.areas.map((area) => (
+                                    <li key={area.name}>
+                                        <button onClick={() => handleAreaBtn(area.url)}>{area.name}</button>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
                 </div>
             )}
-            <button onClick={() => onBack('locationsPage')}>Back</button>
+            <button className="back-button" onClick={() => onBack('locationsPage')}>Back to Locations</button>
         </div>
   )
 }

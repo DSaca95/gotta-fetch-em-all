@@ -1,0 +1,92 @@
+/* Locations component styles */
+#locations {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+#locations > div {
+    background-color: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+#locations > div:hover {
+    border-color: #007bff;
+    background-color: #e3f2fd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+#locations h2 {
+    color: #333;
+    margin: 0 0 15px 0;
+    font-size: 20px;
+    text-transform: capitalize;
+    word-break: break-word;
+}
+
+#locations button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#locations button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+#locations button:active {
+    transform: scale(0.98);
+}
+
+/* Loading and error states */
+.locations-loading,
+.locations-error {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 18px;
+}
+
+.locations-loading {
+    color: #6c757d;
+}
+
+.locations-error {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #locations {
+        grid-template-columns: 1fr;
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    #locations > div {
+        padding: 15px;
+    }
+    
+    #locations h2 {
+        font-size: 18px;
+    }
+}

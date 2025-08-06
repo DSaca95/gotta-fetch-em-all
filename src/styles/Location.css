@@ -1,10 +1,154 @@
-div#locations {
-    margin: 0;
-    padding: 25px;
-    background: #D9D9D9;
-    border-radius: 12px;
-    display: grid;
-    
+/* Location component styles */
+.location-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
+.location-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #007bff;
+}
 
+.location-header h3 {
+    color: #333;
+    font-size: 28px;
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.location-region {
+    color: #6c757d;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.areas-section {
+    margin: 30px 0;
+}
+
+.areas-section p {
+    color: #495057;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.areas-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.areas-list li {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.areas-list li:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.areas-list button {
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+}
+
+.areas-list button:hover {
+    background-color: #1e7e34;
+    transform: scale(1.02);
+}
+
+.areas-list button:active {
+    transform: scale(0.98);
+}
+
+.back-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Loading and error states */
+.location-loading,
+.location-error {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.location-loading {
+    color: #6c757d;
+    background-color: #f8f9fa;
+    border: 2px solid #dee2e6;
+}
+
+.location-error {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 2px solid #f5c6cb;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .location-container {
+        padding: 15px;
+        margin: 10px;
+    }
+    
+    .location-header h3 {
+        font-size: 24px;
+    }
+    
+    .areas-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .areas-list button {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+    
+    .areas-section p {
+        font-size: 18px;
+    }
+}
