@@ -13,11 +13,10 @@ function PokemonDisplay({ name }) {
     return (
         <div className="pokemon-container">
             <article>
-                <p>You own:</p>
                 <h3>{pokemon.name}</h3>
                 <img className='poke-picture' src={pokemon.sprites.front_default} alt={pokemon.name}></img>
             </article>
-            <h2>Details:</h2>
+            <h5>Details:</h5>
             <div className='poke-card'>
                 <div className='basics'>
                     <h5>Basic Datas:</h5>
