@@ -83,10 +83,10 @@ export default function Area({url, onBack, addPokemon, ownedPokemons}) {
         const damage = calculateDamage(selectedPlayerPokemon, encounter);
         const newEnemyHP = Math.max(0, enemyHP - damage);
         setEnemyHP(newEnemyHP);
-        setBattleLog(prev => [...prev, `${selectedPlayerPokemon.name} dealt ${damage} damage!`]);
+        setBattleLog(prev => [`${selectedPlayerPokemon.name} dealt ${damage} damage!`, ...prev]);
 
         if (newEnemyHP <= 0) {
-            setBattleLog(prev => [...prev, `${encounter.name} defeated! You caught it!`]);
+            setBattleLog(prev => [`${encounter.name} defeated! You caught it!`, ...prev]);
             addPokemon(encounter.name);
             setGameState('victory');
             setIsAttacking(false);

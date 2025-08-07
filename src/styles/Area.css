@@ -154,21 +154,22 @@
 }
 
 .attack-button {
-    background-color: #dc3545;
+    background-color: #BE0000;
     color: white;
     border: none;
     padding: 15px 30px;
-    border-radius: 8px;
+    border-radius: 2rem;
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
     margin: 20px 0;
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .attack-button:hover:not(:disabled) {
-    background-color: #c82333;
-    transform: scale(1.05);
+    background-color: #fff;
+    color: #BE0000
 }
 
 .attack-button:disabled {
@@ -182,6 +183,7 @@
     margin-top: 30px;
     text-align: left;
     max-width: 600px;
+    height: 400px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -194,6 +196,7 @@
 
 .battle-log ul {
     list-style: none;
+
     padding: 0;
     background-color: #f8f9fa;
     border-radius: 8px;
@@ -206,6 +209,8 @@
     padding: 8px 0;
     border-bottom: 1px solid #dee2e6;
     color: #495057;
+    font-size: calc(0.35rem + 1vw);
+    font-weight: 600;
 }
 
 .battle-log li:last-child {
