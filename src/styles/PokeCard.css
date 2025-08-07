@@ -1,0 +1,55 @@
+.poke-card {
+    background-color: #d9d9d9;
+    padding: 1rem 1rem;
+    border-radius: 2rem;
+    box-shadow: inset 3px 3px 10px rgba(0,0,0,0.25);
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax(350px, 1fr) );
+    grid-gap: 1rem;
+}
+
+.basics {
+    margin: 0;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 2rem;
+}
+.base-container {
+    margin: 0;
+    padding: 0;
+}
+.types {
+    margin: 0;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 2rem;
+}
+.abilities {
+    margin: 0;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 2rem;
+}
+.stats {
+    margin: 0;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 2rem;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li::before {
+    content: none;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    padding-left: 0;
+}
+h5 {
+    padding: 0;
+    margin: 0;
+}

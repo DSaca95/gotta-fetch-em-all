@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
 import "../styles/MyPokemon.css";
+import PokemonCard from "./PokemonCard";
 
 export default function MyPokemon({ ownedPokemons }) {
     const [selectedPokemonURL, setSelectedPokemonURL] = useState(null);
@@ -17,10 +18,7 @@ export default function MyPokemon({ ownedPokemons }) {
             <ul>
                 {ownedPokemons.map((name) => (
                     <li key={name}>
-                        <strong>{name}</strong>
-                        <div>
-                            <button onClick={() => handleClick(name)}>Details</button>
-                        </div>
+                        <PokemonCard />
                     </li>
                 ))}
             </ul>
