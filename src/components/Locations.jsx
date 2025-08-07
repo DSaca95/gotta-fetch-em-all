@@ -12,8 +12,8 @@ const Locations = ({data, loading, error, handleClick}) => {
             {
                 locationsData.map((location, index) => {
                     return <div key={index}>
-                        <h2>{location.name}</h2>
-                        <button onClick={() => handleClick(location.url)}>Go to location</button>
+                        <h2>{location.name} 🏞️</h2>
+                        <button onClick={() => handleClick(location.url)}>Go to location ➡️</button>
                     </div>
                 })
             }

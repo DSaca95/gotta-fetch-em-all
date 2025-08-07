@@ -26,7 +26,7 @@ function Location({url, onBack, handleAreaBtn}) {
                             {
                                 location.areas.map((area) => (
                                     <li key={area.name}>
-                                        <button onClick={() => handleAreaBtn(area.url)}>{area.name}</button>
+                                        <button onClick={() => handleAreaBtn(area.url)}>{area.name} 🏞️</button>
                                     </li>
                                 ))
                             }
@@ -34,7 +34,7 @@ function Location({url, onBack, handleAreaBtn}) {
                     </div>
                 </div>
             )}
-            <button className="back-button" onClick={() => onBack('locationsPage')}>Back to Locations</button>
+            <button className="back-button" onClick={() => onBack('locationsPage')}>Back to Locations ⬅️</button>
         </div>
   )
 }

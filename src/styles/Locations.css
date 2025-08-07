@@ -6,6 +6,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
+    background: #D9D9D9;
+    border-radius: 2rem;
 }
 
 #locations > div {
@@ -25,7 +27,9 @@
 #locations h2 {
     color: #fff;
     margin: 0;
+    padding: 2rem;
     font-size: 20px;
+    text-align: left;
     text-transform: capitalize;
     word-break: break-word;
 }
@@ -35,10 +39,10 @@
     color: #BE0000;
     border: none;
     width: 100%;
-    padding: 0;
+    padding: 2rem;
     border-radius: 0 0 2rem 2rem;
     cursor: pointer;
-    font-size: 16px;
+    font-size: calc(1rem + 1vw);
     font-weight: 500;
     transition: all 0.3s ease;
 }
