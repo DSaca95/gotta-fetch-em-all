@@ -187,7 +187,14 @@ export default function Area({url, onBack, addPokemon, ownedPokemons}) {
                         <p>HP: {playerHP}/{maxPlayerHP}</p>
                     </div>
                     
-                    <div className="battle-vs">VS</div>
+                    <div className="battle-log">
+                    <h4>Battle Log:</h4>
+                        <ul>
+                            {battleLog.map((log, index) => (
+                                <li key={index}>{log}</li>
+                            ))}
+                        </ul>
+                    </div>
                     
                     <div className="battle-pokemon">
                         <h3>{encounter.name}</h3>
@@ -203,15 +210,6 @@ export default function Area({url, onBack, addPokemon, ownedPokemons}) {
                 >
                     {isAttacking ? 'Attacking...' : 'Attack'}
                 </button>
-                
-                <div className="battle-log">
-                    <h4>Battle Log:</h4>
-                    <ul>
-                        {battleLog.map((log, index) => (
-                            <li key={index}>{log}</li>
-                        ))}
-                    </ul>
-                </div>
             </div>
         );
     }
@@ -223,7 +221,7 @@ export default function Area({url, onBack, addPokemon, ownedPokemons}) {
                 <p>You caught {encounter.name}!</p>
                 <img src={encounter.sprites.front_default} alt={encounter.name} />
                 <p className="return-timer">Returning to locations in 3 seconds...</p>
-                <button className="return-button" onClick={() => onBack('locationsPage')}>Back to locations now</button>
+                <button className="return-button" onClick={() => onBack('locationPage')}>Back to locations now</button>
             </div>
         );
     }
@@ -234,7 +232,7 @@ export default function Area({url, onBack, addPokemon, ownedPokemons}) {
                 <h2>Defeat!</h2>
                 <p>{selectedPlayerPokemon.name} was defeated!</p>
                 <p className="return-timer">Returning to locations in 3 seconds...</p>
-                <button className="return-button" onClick={() => onBack('locationsPage')}>Back to locations now</button>
+                <button className="return-button" onClick={() => onBack('locationPage')}>Back to locations now</button>
             </div>
         );
     }
