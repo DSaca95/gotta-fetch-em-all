@@ -57,7 +57,7 @@ export default function Area({url, onBack, addPokemon, ownedPokemons}) {
     }, [encounter]);
 
     useEffect(() => {
-        if (encounter && playerPokemons.length > 0) {
+        if (encounter && playerPokemons.length > 0 && gameState !== 'victory') {
             setGameState('select_pokemon');
         }
     }, [encounter, playerPokemons]);
