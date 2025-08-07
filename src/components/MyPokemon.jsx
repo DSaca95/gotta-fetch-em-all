@@ -1,37 +1,85 @@
-import React, { useState } from "react";
+import React from "react";
 import useFetch from "../hooks/useFetch";
 import "../styles/MyPokemon.css";
 import PokemonCard from "./PokemonCard";
 
-export default function MyPokemon({ ownedPokemons }) {
-    const [selectedPokemonURL, setSelectedPokemonURL] = useState(null);
-    const [pokemon] = useFetch(selectedPokemonURL);
+function PokemonDisplay({ name }) {
+    const [pokemon] = useFetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
 
-    function handleClick(name) {
-        setSelectedPokemonURL(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    if (!pokemon) {
+        return <div>Loading {name}...</div>;
     }
 
     return (
-        <div id="pokemon-page">
-            <h2>My Pokemon ({ownedPokemons.length})</h2>
-            
-            <ul>
-                {ownedPokemons.map((name) => (
-                    <li key={name}>
-                        <PokemonCard />
-                    </li>
-                ))}
-            </ul>
-            
-            {pokemon && (
-                <div className="pokemon-details">
-                    <h3>{pokemon.name}</h3>
-                    <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-                    <p><span>HP:</span><span>{pokemon.stats[0].base_stat}</span></p>
-                    <p><span>Attack:</span><span>{pokemon.stats[1].base_stat}</span></p>
-                    <p><span>Defense:</span><span>{pokemon.stats[2].base_stat}</span></p>
+        <div className="pokemon-container">
+            <article>
+                <p>You own:</p>
+                <h3>{pokemon.name}</h3>
+                <img className='poke-picture' src={pokemon.sprites.front_default} alt={pokemon.name}></img>
+            </article>
+            <h2>Details:</h2>
+            <div className='poke-card'>
+                <div className='basics'>
+                    <h5>Basic Datas:</h5>
+                    <ul className='base-data-container'>
+                        <li>ID: {pokemon.id}</li>
+                        <li>📏 Height: {pokemon.height}</li>
+                        <li>🪶 Weight: {pokemon.weight}</li>
+                        <li>🌟 Base experience: {pokemon.base_experience}</li>
+                    </ul>
                 </div>
-            )}
+
+                <div className='types'>
+                    <h5>Types:</h5>
+                    <ul className='type-data-container'>
+                        {pokemon.types.map((t) => (
+                            <li key={t.slot}>{t.type.name}</li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div className='abilities'>
+                    <h5>Abilities:</h5>
+                    <ul>
+                        {pokemon.abilities.map((a) => (
+                            <li key={a.ability.name}>
+                                {a.ability.name} {a.is_hidden ? '(Hidden)' : ''}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div className='stats'>
+                    <h5>Stats:</h5>
+                    <ul>
+                        {pokemon.stats.map((s) => (
+                            <li key={s.stat.name}>
+                                {s.stat.name}: {s.base_stat}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default function MyPokemon({ ownedPokemons }) {
+    if (!ownedPokemons || ownedPokemons.length === 0) {
+        return (
+            <div>
+                <h2>My Pokémon</h2>
+                <p>You don't own any Pokémon yet!</p>
+            </div>
+        );
+    }
+
+    return (
+        <div>
+            <h2>My Pokémon ({ownedPokemons.length})</h2>
+            {ownedPokemons.map((pokemonName, index) => (
+                <PokemonDisplay key={`${pokemonName}-${index}`} name={pokemonName} />
+            ))}
         </div>
     )
 }
