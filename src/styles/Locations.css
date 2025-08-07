@@ -9,36 +9,34 @@
 }
 
 #locations > div {
-    background-color: #f8f9fa;
-    border: 2px solid #dee2e6;
-    border-radius: 10px;
-    padding: 20px;
+    background-color: #BE0000;
+    border-radius: 2rem;
+    padding: 0;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
 
 #locations > div:hover {
-    border-color: #007bff;
-    background-color: #e3f2fd;
+    background-color: #009BBE;
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    transform: translateY(-2px);
 }
 
 #locations h2 {
-    color: #333;
-    margin: 0 0 15px 0;
+    color: #fff;
+    margin: 0;
     font-size: 20px;
     text-transform: capitalize;
     word-break: break-word;
 }
 
 #locations button {
-    background-color: #007bff;
-    color: white;
+    background-color: #fff;
+    color: #BE0000;
     border: none;
-    padding: 12px 24px;
-    border-radius: 6px;
+    width: 100%;
+    padding: 0;
+    border-radius: 0 0 2rem 2rem;
     cursor: pointer;
     font-size: 16px;
     font-weight: 500;
@@ -46,12 +44,11 @@
 }
 
 #locations button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
+    background-color: #BE0000;
+    color: #fff;
 }
 
 #locations button:active {
-    transform: scale(0.98);
 }
 
 /* Loading and error states */
