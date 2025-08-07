@@ -102,10 +102,10 @@ export default function Area({url, onBack, addPokemon, ownedPokemons}) {
             const enemyDamage = calculateDamage(encounter, selectedPlayerPokemon);
             const newPlayerHP = Math.max(0, playerHP - enemyDamage);
             setPlayerHP(newPlayerHP);
-            setBattleLog(prev => [...prev, `${encounter.name} dealt ${enemyDamage} damage!`]);
+            setBattleLog(prev => [`${encounter.name} dealt ${enemyDamage} damage!`, ...prev]);
 
             if (newPlayerHP <= 0) {
-                setBattleLog(prev => [...prev, `${selectedPlayerPokemon.name} defeated! You lost!`]);
+                setBattleLog(prev => [`${selectedPlayerPokemon.name} defeated! You lost!`, ...prev]);
                 setGameState('defeat');
             }
             setIsAttacking(false);
@@ -118,7 +118,7 @@ export default function Area({url, onBack, addPokemon, ownedPokemons}) {
     useEffect(() => {
         if (gameState === 'victory' || gameState === 'defeat') {
             const timer = setTimeout(() => {
-                onBack('locationsPage');
+                onBack('locationPage');
             }, 3000);
             
             return () => clearTimeout(timer);
@@ -221,7 +221,7 @@ export default function Area({url, onBack, addPokemon, ownedPokemons}) {
                 <p>You caught {encounter.name}!</p>
                 <img src={encounter.sprites.front_default} alt={encounter.name} />
                 <p className="return-timer">Returning to locations in 3 seconds...</p>
-                <button className="return-button" onClick={() => onBack('locationPage')}>Back to locations now</button>
+                <button className="return-button" onClick={() => onBack('locationPage')}>Back to location now</button>
             </div>
         );
     }
@@ -232,7 +232,7 @@ export default function Area({url, onBack, addPokemon, ownedPokemons}) {
                 <h2>Defeat!</h2>
                 <p>{selectedPlayerPokemon.name} was defeated!</p>
                 <p className="return-timer">Returning to locations in 3 seconds...</p>
-                <button className="return-button" onClick={() => onBack('locationPage')}>Back to locations now</button>
+                <button className="return-button" onClick={() => onBack('locationPage')}>Back to location now</button>
             </div>
         );
     }
