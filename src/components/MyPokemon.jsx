@@ -1,7 +1,6 @@
 import React from "react";
 import useFetch from "../hooks/useFetch";
 import "../styles/MyPokemon.css";
-import PokemonCard from "./PokemonCard";
 
 function PokemonDisplay({ name }) {
     const [pokemon] = useFetch(`https://pokeapi.co/api/v2/pokemon/${name}`);

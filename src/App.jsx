@@ -12,7 +12,7 @@ function App() {
   const [locations, loading, error] = useFetch('https://pokeapi.co/api/v2/location');
   const [selectedLocationURL, setSelectedLocationURL] = useState(null);
   const [selectedAreaURL, setSelectedAreaURL] = useState(null);
-  const [ownedPokemons, setOwnedPokemons] = useState(['bulbasaur', 'charizard', 'poliwhirl']);
+  const [ownedPokemons, setOwnedPokemons] = useState(['skeledirge', 'charizard', 'poliwhirl', 'arceus']);
 
   const [currentPage, setCurrentPage] = useState('locationsPage');
 
